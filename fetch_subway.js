@@ -4,7 +4,7 @@ let t = await fetch('http://map.baidu.com/?qt=subwayscity&t=0000');
 let j = await t.json();
 let resArr = [];
  await Promise.all(j.subways_city.cities.map(async v=>{
-     if (v.code < 300) {
+     if (v.code < 500) {
          let cs = await ( await fetch(`https://map.baidu.com/?qt=bsi&c=${v.code}&t=0000`)).json();
          let n = {contents: [], city_name: v.cn_name};
           cs.content.map(v=>{
